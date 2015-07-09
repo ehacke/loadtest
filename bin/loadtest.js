@@ -38,7 +38,9 @@ var options = stdio.getopt({
 	debug: {description: 'Show debug messages'},
 	insecure: {description: 'Allow self-signed certificates over https'},
 	key: {args: 1, description: 'The client key to use'},
-	cert: {args: 1, description: 'The client certificate to use'}
+	cert: {args: 1, description: 'The client certificate to use'},
+  proxy: {args: 1, description: 'Proxy server host:ip'},
+  proxyUser: {args: 1, description: 'Proxy authentication info username:password'}
 });
 if (options.version)
 {
@@ -106,7 +108,7 @@ if (options.headers)
 }
 
 if (options.requestGenerator) {
-    options.requestGenerator = require(options.requestGenerator);
+  options.requestGenerator = require(options.requestGenerator);
 }
 
 options.headers = defaultHeaders;
